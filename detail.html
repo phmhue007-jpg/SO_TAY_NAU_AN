@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ recipe.title }} - Sổ Tay Nấu Ăn</title>
+    <style>
+        body { font-family: 'Segoe UI', Arial, sans-serif; margin: 0; padding: 0; background-color: #FFF0F5; color: #4A4A4A; }
+        .header { background-color: #FFB6C1; padding: 20px; text-align: center; color: white; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .container { max-width: 800px; margin: 30px auto; padding: 20px; background: white; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        .recipe-img { width: 100%; max-height: 400px; object-fit: cover; border-radius: 12px; border: 3px solid #FFC0CB; }
+        .meta-actions { margin: 20px 0; padding: 10px; background: #FFF0F5; border-radius: 10px; display: flex; gap: 15px; align-items: center; }
+        .btn-action { padding: 8px 15px; border-radius: 20px; text-decoration: none; font-weight: bold; color: white; font-size: 14px; }
+        .btn-like { background-color: #FF69B4; }
+        .btn-dislike { background-color: #94a3b8; }
+        .section-title { color: #DB7093; border-bottom: 2px solid #FFE4E1; padding-bottom: 5px; margin-top: 25px; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🌸 {{ recipe.title }} 🌸</h1>
+        <p>Chi tiết công thức nấu ăn ngọt ngào</p>
+    </div>
+
+    <div class="container">
+        <p><a href="/" style="color: #DB7093; text-decoration: none; font-weight: bold;">← Quay lại trang chủ</a></p>
+        
+        <img src="{{ recipe.image_url }}" class="recipe-img">
+
+        <div class="meta-actions">
+            <span>Bạn thích công thức này không?</span>
+            <a href="/recipe/{{ recipe.id }}/like" class="btn-action btn-like">👍 Thích ({{ recipe.likes }})</a>
+            <a href="/recipe/{{ recipe.id }}/dislike" class="btn-action btn-dislike">👎 Không thích ({{ recipe.dislikes }})</a>
+        </div>
+
+        <h3 class="section-title">🥣 Nguyên liệu</h3>
+        <p style="white-space: pre-line; line-height: 1.6;">{{ recipe.ingredients }}</p>
+
+        <h3 class="section-title">📝 Cách làm</h3>
+        <p style="white-space: pre-line; line-height: 1.6;">{{ recipe.instructions }}</p>
+    </div>
+</body>
+</html>
