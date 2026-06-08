@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Đăng nhập tài khoản</title>
+    <style>
+        body { font-family: Arial; margin: 40px; background-color: #FFF0F5; text-align: center; }
+        .login-box { background: white; padding: 30px; border-radius: 10px; max-width: 350px; margin: 8px auto; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        input { width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #FFC0CB; border-radius: 5px; box-sizing: border-box; }
+        button { background: #FF69B4; color: white; border: none; padding: 10px; width: 100%; border-radius: 5px; font-weight: bold; cursor: pointer;}
+    </style>
+</head>
+<body>
+    <div class="login-box">
+        <h2 style="color: #FF69B4;">ĐĂNG NHẬP</h2>
+        <form method="POST">
+            <input type="text" name="username" placeholder="Tên tài khoản" required>
+            <input type="password" name="password" placeholder="Mật khẩu" required>
+            <button type="submit">Vào bếp thôi!</button>
+        </form>
+        <p style="font-size: 14px;">Chưa có tài khoản? <a href="/register" style="color: #FF69B4;">Đăng ký tại đây</a></p>
+    </div>
+</body>
+</html>

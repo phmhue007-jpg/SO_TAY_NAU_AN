@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quản lý người dùng - Sổ Tay Nấu Ăn</title>
+    <style>
+        body { font-family: 'Segoe UI', Arial, sans-serif; margin: 0; padding: 0; background-color: #FFF0F5; color: #4A4A4A; }
+        .header { background-color: #FFB6C1; padding: 20px; text-align: center; color: white; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .container { max-width: 800px; margin: 30px auto; padding: 20px; background: white; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        .btn { padding: 6px 12px; border-radius: 20px; color: white; text-decoration: none; font-weight: bold; font-size: 13px; display: inline-block; }
+        .btn-role { background: #66BB6A; } /* Màu xanh lá đổi quyền */
+        .btn-delete { background: #FF4d4d; } /* Màu đỏ xóa */
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; border-radius: 8px; overflow: hidden; }
+        th { background-color: #FFC0CB; color: #4A4A4A; padding: 12px; }
+        td { border-bottom: 1px solid #FFE4E1; padding: 12px; text-align: center; }
+        .badge { padding: 4px 10px; border-radius: 10px; font-size: 12px; font-weight: bold; color: white; }
+        .badge-admin { background: #E91E63; }
+        .badge-user { background: #03A9F4; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>👥 QUẢN LÝ THÀNH VIÊN HỆ THỐNG</h1>
+        <p>Nơi Admin kiểm soát quyền hạn của người dùng</p>
+    </div>
+
+    <div class="container">
+        <a href="/" style="color: #DB7093; text-decoration: none; font-weight: bold;">← Quay lại Trang chủ</a>
+        
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Tên tài khoản</th>
+                <th>Quyền hiện tại</th>
+                <th>Hành động</th>
+            </tr>
+            {% for u in users %}
+            <tr>
+                <td>{{ u.id }}</td>
+                <td><b>{{ u.username }}</b></td>
+                
+                <td>
+                    {% if u.username.lower() != 'admin' %}
+                        <form action="/admin/users/change_role/{{ u.id }}" method="POST" style="display: inline-block;">
+                            <select name="role" onchange="this.form.submit()" style="padding: 5px 10px; border-radius: 15px; border: 2px solid #FFC0CB; outline: none; background: white; cursor: pointer; font-weight: bold; color: #4A4A4A;">
+                                <option value="user" {% if u.role == 'user' %}selected{% endif %}>Thành viên</option>
+                                <option value="admin" {% if u.role == 'admin' %}selected{% endif %}>Admin</option>
+                            </select>
+                        </form>
+                    {% else %}
+                        <span class="badge badge-admin">Admin</span>
+                    {% endif %}
+                </td>
+
+                <td>
+                    {% if u.username.lower() != 'admin' %}
+                        <a href="/admin/users/delete/{{ u.id }}" class="btn btn-delete" onclick="return confirm('Bạn có chắc muốn xóa thành viên này?')">Xóa tài khoản</a>
+                    {% else %}
+                        <span style="color: gray; font-style: italic;">Tài khoản gốc (Khóa)</span>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+</html>

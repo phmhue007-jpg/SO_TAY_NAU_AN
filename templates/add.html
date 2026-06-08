@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Thêm công thức mới</title>
+    <style>
+        body { font-family: Arial; margin: 40px; background-color: #FFF0F5; }
+        .form-box { background: white; padding: 30px; border-radius: 12px; max-width: 500px; margin: auto; box-shadow: 0 4px 8px rgba(0,0,0,0.05); }
+        h1 { color: #FF69B4; text-align: center; }
+        input, textarea { width: 100%; padding: 10px; margin: 8px 0; border: 1px solid #FFC0CB; border-radius: 5px; box-sizing: border-box; }
+        button { background: #FF69B4; color: white; border: none; padding: 12px; width: 100%; border-radius: 5px; font-weight: bold; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <div class="form-box">
+        <h1>CHIA SẺ CÔNG THỨC</h1>
+        <form method="POST" enctype="multipart/form-data">
+            <label>Tên món ăn:</label>
+            <input type="text" name="title" placeholder="Ví dụ: Bánh dâu ngọt ngào" required>
+    
+            <label>Nguyên liệu:</label>
+            <textarea name="ingredients" style="height: 80px;" placeholder="Mỗi nguyên liệu cách nhau bằng dấu phẩy" required></textarea>
+    
+            <label>Các bước làm:</label>
+            <textarea name="instructions" style="height: 120px;" placeholder="Bước 1, Bước 2..." required></textarea>
+    
+            <label>Hình ảnh món ăn (Tải từ máy tính):</label>
+            <input type="file" name="image_file" accept="image/*">
+     
+            <button type="submit">Chia sẻ công thức</button>
+        </form>
+        <br>
+        <a href="/" style="color: #FF69B4; text-decoration: none;">Quay lại trang chủ</a>
+    </div>
+</body>
+</html>
